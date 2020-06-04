@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PrototechTestApp</string>
+
+    <string name="fragment_login_title">Авторизация</string>
+    <string name="fragment_signals_title">Сигналы</string>
+
+    <string name="text_enter_account">Вход в аккаунт</string>
+    <string name="button_text_auth">Вход в систему</string>
+    <string name="text_signal_period">Период:</string>
 </resources>
