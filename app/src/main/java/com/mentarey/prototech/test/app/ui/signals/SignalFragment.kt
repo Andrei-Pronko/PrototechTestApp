@@ -131,9 +131,7 @@ class SignalFragment : BaseFragment(R.layout.fragment_signals) {
     }
 
     private fun getEndDate(): Long {
-        val calendarEnd: Calendar = GregorianCalendar.getInstance()
-        calendarEnd.set(2020, 6, 5)
-        return calendarEnd.timeInMillis
+        return GregorianCalendar.getInstance().timeInMillis
     }
 
     private val signalsActor = lifecycleScope.actor<List<ForexSignalUI>> {
