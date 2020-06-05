@@ -57,6 +57,6 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     }
 
     private fun openSignalsScreen() {
-        activity.replaceContainer(R.id.fragment_container, SignalFragment())
+        activity.replaceContainer(R.id.fragment_container, SignalFragment(), true)
     }
 }
