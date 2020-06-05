@@ -14,6 +14,7 @@ import com.mentarey.prototech.test.app.ext.toVisibility
 import com.mentarey.prototech.test.app.ui.signals.SignalFragment
 import com.mentarey.prototech.test.app.ui.state.UserAuthState
 import com.mentarey.prototech.test.app.ui.utils.BaseFragment
+import com.mentarey.prototech.test.app.ui.utils.EMPTY_LINE
 import com.mentarey.prototech.test.app.ui.utils.FragmentToolbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,8 +38,10 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private fun observeViewModel() {
         loginViewModel.userAuthState.observeEvent(viewLifecycleOwner) {
             when (it) {
-                is UserAuthState.Success ->
+                is UserAuthState.Success -> {
+                    clearAccountData()
                     openSignalsScreen()
+                }
                 is UserAuthState.Error ->
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
             }
@@ -77,6 +80,11 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private fun hideKeyboard() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
+    }
+
+    private fun clearAccountData() {
+        editText_user_login.setText(EMPTY_LINE)
+        editText_user_password.setText(EMPTY_LINE)
     }
 
     private fun openSignalsScreen() {
