@@ -10,7 +10,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        openLoginScreen()
+        if (savedInstanceState == null)
+            openLoginScreen()
     }
 
     private fun openLoginScreen() {
