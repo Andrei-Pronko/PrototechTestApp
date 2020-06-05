@@ -14,8 +14,8 @@ interface PrototechApi {
     suspend fun getAnalyticSignals(
         @Path("login") login: String,
         @Query("pairs") pairsString: String,
-        @Query("from") from: Long = 1479860023,
-        @Query("to") to: Long = 1480066860,
+        @Query("from") from: Long,
+        @Query("to") to: Long,
         @Query("tradingsystem") tradingSystem: Int = 3
     ): List<ForexSignal>
 }

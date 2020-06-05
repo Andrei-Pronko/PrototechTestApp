@@ -49,8 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:gravity="top|start"
-            android:text="20234561" />
+            android:gravity="top|start" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -72,8 +71,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="top|start"
-            android:inputType="textPassword"
-            android:text="ladevi31" />
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
