@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.observe
 import com.mentarey.prototech.test.app.R
+import com.mentarey.prototech.test.app.ext.observeEvent
 import com.mentarey.prototech.test.app.ext.replaceContainer
 import com.mentarey.prototech.test.app.ext.toVisibility
 import com.mentarey.prototech.test.app.ui.signals.SignalFragment
@@ -30,7 +31,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     }
 
     private fun observeViewModel() {
-        loginViewModel.userAuthState.observe(viewLifecycleOwner) {
+        loginViewModel.userAuthState.observeEvent(viewLifecycleOwner) {
             when (it) {
                 is UserAuthState.Success ->
                     openSignalsScreen()
