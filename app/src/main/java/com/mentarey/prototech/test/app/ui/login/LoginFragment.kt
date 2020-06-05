@@ -1,7 +1,10 @@
 package com.mentarey.prototech.test.app.ui.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.observe
 import com.mentarey.prototech.test.app.R
@@ -28,6 +31,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setUpAuthButton()
+        setUpPasswordImeListener()
     }
 
     private fun observeViewModel() {
@@ -51,10 +55,28 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         button_auth_user.setOnClickListener { startAuth() }
     }
 
+    private fun setUpPasswordImeListener() {
+        editText_user_password.setOnEditorActionListener { _, actionId, _ ->
+            when (actionId) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    startAuth()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
     private fun startAuth() {
+        hideKeyboard()
         val login = editText_user_login.text.toString()
         val password = editText_user_password.text.toString()
         loginViewModel.authorizationWith(login, password)
+    }
+
+    private fun hideKeyboard() {
+        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, 0)
     }
 
     private fun openSignalsScreen() {
