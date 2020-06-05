@@ -20,13 +20,11 @@ class SignalsInteractor(
             if (endDate == null)
                 return@withContext RemoteSignal.Error("Не указана дата окончания поиска")
             try {
-                val token = userAccountRepository.getUserToken()
                 val login = userAccountRepository.getUserLogin()
                 val pairsString = pairs.toPairQueryParam()
                 val from = startDate.toSeconds()
                 val to = endDate.toSeconds()
                 val forexSignal = prototechApi.getAnalyticSignals(
-                    token = token,
                     login = login,
                     pairsString = pairsString,
                     from = from,

@@ -6,6 +6,7 @@ import com.mentarey.prototech.test.app.data.pref.SettingsManagerImpl
 import com.mentarey.prototech.test.app.data.pref.UserAccountRepository
 import com.mentarey.prototech.test.app.data.pref.UserAccountRepositoryImpl
 import com.mentarey.prototech.test.app.data.retrofit.PrototechApi
+import com.mentarey.prototech.test.app.data.retrofit.TokenInterceptor
 import com.mentarey.prototech.test.app.domain.LoginInteractor
 import com.mentarey.prototech.test.app.domain.SignalsInteractor
 import com.mentarey.prototech.test.app.ui.login.LoginViewModel
@@ -28,9 +29,11 @@ private val retrofitModule = module {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
+    single { TokenInterceptor() }
     single {
         OkHttpClient.Builder().apply {
             addInterceptor(get<HttpLoggingInterceptor>())
+            addInterceptor(get<TokenInterceptor>())
         }.build()
     }
     single {
@@ -55,7 +58,7 @@ private val preferencesModule = module {
 }
 
 private val loginModule = module {
-    factory { LoginInteractor(get(), get()) }
+    factory { LoginInteractor(get(), get(), get()) }
     viewModel { LoginViewModel(get()) }
 }
 
