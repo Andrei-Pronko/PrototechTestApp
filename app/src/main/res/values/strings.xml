@@ -4,7 +4,10 @@
     <string name="fragment_login_title">Авторизация</string>
     <string name="fragment_signals_title">Сигналы</string>
 
+    <string name="dialog_title_choice_date_range">Выберите даты поиска</string>
+
     <string name="text_enter_account">Вход в аккаунт</string>
-    <string name="button_text_auth">Вход в систему</string>
+    <string name="button_text_auth">Авторизация</string>
     <string name="text_signal_period">Период:</string>
+    <string name="button_text_choice_date_range">Выбрать диапазон поиска</string>
 </resources>

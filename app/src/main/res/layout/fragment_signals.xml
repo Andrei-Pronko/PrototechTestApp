@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/colorPrimary"
+        android:theme="@style/ToolBarStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +45,8 @@
         android:id="@+id/button_get_signals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Тестовый запрос"
+        android:layout_marginBottom="8dp"
+        android:text="@string/button_text_choice_date_range"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
