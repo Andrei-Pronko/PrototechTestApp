@@ -11,3 +11,8 @@ sealed class RemoteSignal {
     class Data(val forexSignalUIListUI: List<ForexSignalUI>) : RemoteSignal()
     class Error(val message: String?) : RemoteSignal()
 }
+
+sealed class DateRangeDialogState{
+    object Open: DateRangeDialogState()
+    object Close: DateRangeDialogState()
+}
